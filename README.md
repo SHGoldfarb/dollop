@@ -2,6 +2,8 @@
 
 PWA made for **IIC3585 - Diseño Avanzado de Aplicaciones Web** in **Pontifica Universidad Católica de Chile**
 
+It can currently (September 23, 2018) be seen working in https://dollop-d2503.firebaseapp.com.
+
 ## Local setup
 
 You will need [yarn](https://yarnpkg.com/en/).
