@@ -17,3 +17,5 @@ Login into firebase with `yarn firebase login`. Get colaborator permissions from
 ## Disclaimer
 
 Developed by intially following [this guide](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp), contains code that is not mine, and there is some leftover code that is unused.
+
+It also uses code from [OneSignal](https://onesignal.com) to receive push notifications.
