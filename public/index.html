@@ -21,6 +21,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recordatorios</title>
+  <link rel="stylesheet" type="text/css" href="styles/materialize.css">
   <link rel="stylesheet" type="text/css" href="styles/inline.css">
 
   <!-- TODO add manifest here - DONE -->
@@ -56,17 +57,17 @@
 <body>
 
   <header class="header">
-    <h1 class="header__title">Recordatorio</h1>
+    <h1 class="header__title">Recordatorios</h1>
     <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
     <button id="butAdd" class="headerButton" aria-label="Add"></button>
   </header>
 
   <main class="main">
     <div class="card cardTemplate weather-forecast" hidden>
-      <button class="delete-card">Eliminar</button>
       <div class="city-key" hidden></div>
       <div class="card-last-updated" hidden></div>
-      <div class="title"></div>
+      <div class="title-container"><div class="title"></div>
+      <button class="delete-card">Eliminar</button></div>
       <div class="inline">Creado el&ensp;<div class="date"></div></div>
   </main>
 
