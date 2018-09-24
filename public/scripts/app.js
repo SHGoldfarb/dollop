@@ -17,10 +17,8 @@
   'use strict';
 
   var app = {
-    isLoading: true,
     visibleCards: {},
     reminders: [],
-    spinner: document.querySelector('.loader'),
     cardTemplate: document.querySelector('.cardTemplate'),
     container: document.querySelector('.main'),
     addDialog: document.querySelector('.dialog-container'),
@@ -64,6 +62,8 @@
     app.saveReminders();
     app.toggleAddDialog(false);
     app.updateCard(data);
+
+    reminderNameInput.value = '';
   });
 
   document.getElementById('butAddCancel').addEventListener('click', function() {
@@ -89,28 +89,25 @@
 
   app.updateCard = function(data) {
     console.log(data);
-    var card = app.visibleCards[data.title];
-    if (!card) {
-      card = app.cardTemplate.cloneNode(true);
-      card.classList.remove('cardTemplate');
-      card.querySelector('.title').textContent = data.title;
-      card.querySelector('.date').textContent = (new Date(data.date))
-        .toLocaleDateString('es-CL', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
-        });
-      card.removeAttribute('hidden');
-      app.container.appendChild(card);
-      app.visibleCards[data.key] = card;
-    }
-    if (app.isLoading) {
-      app.spinner.setAttribute('hidden', true);
-      app.container.removeAttribute('hidden');
-      app.isLoading = false;
-    }
+    const card = app.cardTemplate.cloneNode(true);
+    card.classList.remove('cardTemplate');
+    card.querySelector('.title').textContent = data.title;
+    card.querySelector('.date').textContent = (new Date(data.date))
+      .toLocaleDateString('es-CL', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    card.querySelector('.delete-card').addEventListener('click', function() {
+      card.parentNode.removeChild(card);
+      app.reminders = app.reminders.filter(function (reminder) {return reminder.title != data.title});
+      app.saveReminders()
+    })
+    card.removeAttribute('hidden');
+    app.container.appendChild(card);
+    app.visibleCards[data.key] = card;
   };
 
   // Iterate all of the cards and attempt to get the latest forecast data
