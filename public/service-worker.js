@@ -70,3 +70,4 @@ self.addEventListener('fetch', function(e) {
   }
 });
   
+importScripts('https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js');

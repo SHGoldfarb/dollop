@@ -132,7 +132,11 @@
    *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
    ************************************************************************/
 
-  app.reminders = JSON.parse(localStorage.reminders) || [];
+  try {
+    app.reminders = JSON.parse(localStorage.reminders) || [];
+  } catch {
+    app.reminders = [];
+  }
   app.updateReminders();
 
 
