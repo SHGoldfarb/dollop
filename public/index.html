@@ -16,11 +16,12 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#259c30"/>
+  <meta name="theme-color" content="#259c30" />
   <title>Recordatorios</title>
   <link rel="stylesheet" type="text/css" href="styles/materialize.css">
   <link rel="stylesheet" type="text/css" href="styles/inline.css">
@@ -33,14 +34,14 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Reminders PWA">
   <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
-  
+
   <!-- For Windows: -->
 
   <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
   <meta name="msapplication-TileColor" content="#2F3BA2">
 
   <!-- OneSignal -->
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script>
     var OneSignal = window.OneSignal || [];
     OneSignal.push(function() {
@@ -52,9 +53,10 @@
         },
       });
     });
-  </script>
-  
+  </script> -->
+
 </head>
+
 <body>
 
   <header class="header">
@@ -67,16 +69,20 @@
     <div class="card cardTemplate weather-forecast" hidden>
       <div class="city-key" hidden></div>
       <div class="card-last-updated" hidden></div>
-      <div class="title-container"><div class="title"></div>
-      <button class="delete-card">Eliminar</button></div>
-      <div class="inline">Creado el&ensp;<div class="date"></div></div>
+      <div class="title-container">
+        <div class="title"></div>
+        <button class="delete-card">Eliminar</button>
+      </div>
+      <div class="inline">Creado el&ensp;
+        <div class="date"></div>
+      </div>
   </main>
 
   <div class="dialog-container">
     <div class="dialog">
       <div class="dialog-title">Agregar nuevo recodatorio</div>
       <div class="dialog-body">
-        <input type="text" name="fname" id="reminderNameInput"/>
+        <input type="text" name="fname" id="reminderNameInput" />
       </div>
       <div class="dialog-buttons">
         <button id="butAddCity" class="button">Agregar</button>
@@ -94,4 +100,5 @@
   <script src="scripts/app.js" async></script>
 
 </body>
+
 </html>

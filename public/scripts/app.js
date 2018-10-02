@@ -13,7 +13,7 @@
 // limitations under the License.
 
 
-(function() {
+(function () {
   'use strict';
 
   var app = {
@@ -25,8 +25,8 @@
     daysOfWeek: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
     // fechaEntrega:  document.querySelector('.dialog-container')
 
-  };  
-  
+  };
+
 
   /*****************************************************************************
    *
@@ -34,19 +34,19 @@
    *
    ****************************************************************************/
 
-  document.getElementById('butRefresh').addEventListener('click', function() {
+  document.getElementById('butRefresh').addEventListener('click', function () {
     // Refresh all of the forecasts
     app.updateReminders();
   });
 
-  document.getElementById('butAdd').addEventListener('click', function() {
+  document.getElementById('butAdd').addEventListener('click', function () {
     // Open/show the add new city dialog
     app.toggleAddDialog(true);
   });
 
   let reminderNameInput = document.getElementById('reminderNameInput')
 
-  document.getElementById('butAddCity').addEventListener('click', function() {
+  document.getElementById('butAddCity').addEventListener('click', function () {
     // Add the newly selected city
 
     let title = reminderNameInput.value;
@@ -57,7 +57,7 @@
     }
 
     // TODO push the selected city to the array and save here - DONE
-    let data = {title, date: new Date()}
+    let data = { title, date: new Date() }
     app.reminders.push(data);
     app.saveReminders();
     app.toggleAddDialog(false);
@@ -66,7 +66,7 @@
     reminderNameInput.value = '';
   });
 
-  document.getElementById('butAddCancel').addEventListener('click', function() {
+  document.getElementById('butAddCancel').addEventListener('click', function () {
     // Close the add new city dialog
     app.toggleAddDialog(false);
   });
@@ -79,7 +79,7 @@
    ****************************************************************************/
 
   // Toggles the visibility of the add new city dialog.
-  app.toggleAddDialog = function(visible) {
+  app.toggleAddDialog = function (visible) {
     if (visible) {
       app.addDialog.classList.add('dialog-container--visible');
     } else {
@@ -87,7 +87,7 @@
     }
   };
 
-  app.updateCard = function(data) {
+  app.updateCard = function (data) {
     console.log(data);
     const card = app.cardTemplate.cloneNode(true);
     card.classList.remove('cardTemplate');
@@ -100,9 +100,9 @@
         hour: '2-digit',
         minute: '2-digit'
       });
-    card.querySelector('.delete-card').addEventListener('click', function() {
+    card.querySelector('.delete-card').addEventListener('click', function () {
       card.parentNode.removeChild(card);
-      app.reminders = app.reminders.filter(function (reminder) {return reminder.title != data.title});
+      app.reminders = app.reminders.filter(function (reminder) { return reminder.title != data.title });
       app.saveReminders()
     })
     card.removeAttribute('hidden');
@@ -111,12 +111,12 @@
   };
 
   // Iterate all of the cards and attempt to get the latest forecast data
-  app.updateReminders = function() {
-    app.reminders.forEach(function(reminder) {app.updateCard(reminder)});
+  app.updateReminders = function () {
+    app.reminders.forEach(function (reminder) { app.updateCard(reminder) });
   };
 
   // Save list of cities to localStorage.
-  app.saveReminders = function() {
+  app.saveReminders = function () {
     var reminders = JSON.stringify(app.reminders);
     localStorage.reminders = reminders;
   };
@@ -141,10 +141,10 @@
 
 
   // TODO add service worker code here - DONE
-  
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-             .register('./service-worker.js')
-             .then(function() { console.log('Service Worker Registered'); });
-  }
+
+  // if ('serviceWorker' in navigator) {
+  //   navigator.serviceWorker
+  //            .register('./service-worker.js')
+  //            .then(function() { console.log('Service Worker Registered'); });
+  // }
 })();
